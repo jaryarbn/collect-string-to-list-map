@@ -11,24 +11,27 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Map<String,List<User>> usersMap = new HashMap<>();
+        Map<String, List<User>> usersMap = new HashMap<>();
         users.sort(new Comparator<User>() {
             @Override
             public int compare(User user, User t1) {
-                if(user.getAge() > t1.getAge()){return 1;}
-                if(user.getAge() < t1.getAge()){return -1;}
+                if (user.getAge() > t1.getAge()) {
+                    return 1;
+                }
+                if (user.getAge() < t1.getAge()) {
+                    return -1;
+                }
                 return 0;
             }
         });
-       for (User user :
+        for (User user :
                 users) {
-          if(usersMap.containsKey(user.getDepartment()) == false){
-              usersMap.put(user.getDepartment(), new ArrayList<>());
-          }
+            if (usersMap.containsKey(user.getDepartment()) == false) {
+                usersMap.put(user.getDepartment(), new ArrayList<>());
+            }
             usersMap.get(user.getDepartment()).add(user);
         }
-        System.out.printf("usersMap"+usersMap);
-        return null;
+        return usersMap;
     }
 
     public static void main(String[] args) {
