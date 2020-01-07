@@ -11,31 +11,26 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        List<User> techDp = new ArrayList<>();
-        List<User> marDp = new ArrayList<>();
-        for (User user : users) {
-            if("技术部".equals(user.getDepartment())){
-                techDp.add(user);
-            }else if("市场部".equals(user.getDepartment())){
-                marDp.add(user);
+        Map<String, List<User>> map = new HashMap<>();
+        for (User u : users) {
+            String department = u.getDepartment();
+            if (map.containsKey(department)) {
+                map.get(department).add(u);
+            } else {
+                List list = new ArrayList();
+                list.add(u);
+                map.put(department, list);
             }
         }
-        techDp.sort(new Comparator<User>() {
-            @Override
-            public int compare(User o1, User o2) {
-                return Integer.compare(o1.getAge(),o2.getAge());
-            }
-        });
-        marDp.sort(new Comparator<User>() {
-            @Override
-            public int compare(User o1, User o2) {
-                return Integer.compare(o1.getAge(),o2.getAge());
-            }
-        });
-        Map<String, List<User>> resultMap = new HashMap<>();
-        resultMap.put("技术部",techDp);
-        resultMap.put("市场部",marDp);
-        return resultMap;
+        for (String department : map.keySet()) {
+            map.get(department).sort(new Comparator<User>() {
+                @Override
+                public int compare(User o1, User o2) {
+                    return Integer.compare(o1.getAge(), o2.getAge());
+                }
+            });
+        }
+        return map;
     }
 
     public static void main(String[] args) {
