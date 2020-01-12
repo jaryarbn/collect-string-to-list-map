@@ -11,18 +11,9 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        /*
-            做映射和排序
-                1. 映射，字符串加一个用户的 list 的 Map，
-                    其实，题目只有两个部门，一个市场部一个技术部，
-                        只需要提取 user 的名字，分别加入到不同的 Map 中的 list
-                2. 其中每插入一个用户，要做一个年龄的比较（重写比较的方法）,
-              m      不一定，排序等于有序的序列，可以利用 TreeSet ？
-         */
         HashMap<String, List<User>> mapUser = new HashMap<>();
 
-        for (User user :
-                users) {
+        for (User user : users) {
             String department = user.getDepartment();
             if (mapUser.containsKey(department)) {
                 mapUser.get(department).add(user);
