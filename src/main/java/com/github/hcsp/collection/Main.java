@@ -1,8 +1,6 @@
 package com.github.hcsp.collection;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -21,18 +19,22 @@ public class Main {
                 2. 其中每插入一个用户，要做一个年龄的比较（重写比较的方法）,
               m      不一定，排序等于有序的序列，可以利用 TreeSet ？
          */
-        Map<String,List<User>> mapUser = new Map
+        HashMap<String, List<User>> mapUser = new HashMap<>();
 
         for (User user :
                 users) {
-            if (user.getDepartment() == "技术部") {
-
+            String department = user.getDepartment();
+            if (mapUser.containsKey(department)) {
+                mapUser.get(department).add(user);
+                Collections.sort(mapUser.get(department));
             } else {
-
+                List<User> list = new ArrayList<>();
+                list.add(user);
+                mapUser.put(department, list);
             }
         }
 
-
+        return mapUser;
     }
 
     public static void main(String[] args) {
