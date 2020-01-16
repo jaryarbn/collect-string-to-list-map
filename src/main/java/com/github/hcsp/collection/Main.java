@@ -12,8 +12,6 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> departmentMap = new HashMap<>();
-        List<User> list1 = new ArrayList<>();
-        List<User> list2 = new ArrayList<>();
         for (User user : users) {
             String key = user.getDepartment();
             if (departmentMap.containsKey(key) && departmentMap.get(key) != null) {
