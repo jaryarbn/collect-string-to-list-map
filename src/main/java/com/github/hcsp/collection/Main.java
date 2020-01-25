@@ -11,16 +11,15 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        HashMap<String,List<User>> map=new HashMap<>();
-        for (User user:users) {
-            if(map.containsKey(user.getDepartment())){
-               map.get(user.getDepartment()).add(user);
-               Collections.sort(map.get(user.getDepartment()));
-            }
-            else{
-                List<User> AssortedUsers=new ArrayList();
+        HashMap<String, List<User>> map = new HashMap<>();
+        for (User user : users) {
+            if (map.containsKey(user.getDepartment())) {
+                map.get(user.getDepartment()).add(user);
+                Collections.sort(map.get(user.getDepartment()));
+            } else {
+                List<User> AssortedUsers = new ArrayList();
                 AssortedUsers.add(user);
-                map.put(user.getDepartment(),AssortedUsers);
+                map.put(user.getDepartment(), AssortedUsers);
             }
         }
         return map;
