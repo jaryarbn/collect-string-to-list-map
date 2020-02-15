@@ -12,22 +12,20 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> mapusers = new HashMap<>();
-        Set<String> set = new HashSet<>();
         for (User user : users
         ) {
-            set.add(user.getDepartment());
-
-        }
-        for (String department : set) {
-            List<User> userList = new ArrayList<>();
-            for (User user : users
-            ) {
-                if (department.equals(user.getDepartment())) {
-                    userList.add(user);
-                }
+            String department = user.getDepartment();
+            if (mapusers.containsKey(department)) {
+                mapusers.get(department).add(user);
+            } else {
+                List<User> user1 = new ArrayList<>();
+                user1.add(user);
+                mapusers.put(department, user1);
             }
-            Collections.sort(userList);
-            mapusers.put(department, userList);
+        }
+        for (String department : mapusers.keySet()
+        ) {
+            Collections.sort(mapusers.get(department));
         }
         return mapusers;
     }
