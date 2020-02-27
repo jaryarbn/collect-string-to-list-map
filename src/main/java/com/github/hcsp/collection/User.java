@@ -52,6 +52,15 @@ public class User implements Comparable<User> {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", department='" + department + '\'' +
+                '}';
+    }
 
     @Override
     public int compareTo(User anotherUser) {
