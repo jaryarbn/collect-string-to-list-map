@@ -1,9 +1,6 @@
 package com.github.hcsp.collection;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.MatchGenerator;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
@@ -31,9 +28,6 @@ public class Main {
         }
         return NewMapList;
     }
-    //然后就是同一个部门的按照年龄排序了
-
-
     public static void main(String[] args) {
         System.out.println(
                 collect(
