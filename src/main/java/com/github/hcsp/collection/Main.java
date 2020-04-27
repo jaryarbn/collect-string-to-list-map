@@ -13,20 +13,20 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
 
     public static Map<String, List<User>> collect(List<User> users) {
-        Map<String, List<User>> NewMapList = new HashMap<>();
+        Map<String, List<User>> newMapList = new HashMap<>();
         Collections.sort(users);
         for (User user : users) {
             String department = user.getDepartment();
-            List<User> NewUser;
-            if (NewMapList.get(department) != null) {
-                NewUser = NewMapList.get(department);
+            List<User> newUser;
+            if (newMapList.get(department) != null) {
+                newUser = newMapList.get(department);
             } else {
-                NewUser = new ArrayList<>();
+                newUser = new ArrayList<>();
             }
-            NewUser.add(user);
-            NewMapList.put(department, NewUser);
+            newUser.add(user);
+            newMapList.put(department, newUser);
         }
-        return NewMapList;
+        return newMapList;
     }
     public static void main(String[] args) {
         System.out.println(
