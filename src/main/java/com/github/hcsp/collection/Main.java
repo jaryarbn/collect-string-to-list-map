@@ -14,18 +14,20 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Collections.sort(users);
         Set<User> set = new LinkedHashSet<>(users);
+        Set<String> department = new LinkedHashSet<>();
         Map<String, List<User>> map = new ConcurrentHashMap<>();
-        List<User> tech = new ArrayList<>();
-        List<User> mark = new ArrayList<>();
-        for (User user : set) {
-            if (user.getDepartment().equals("技术部")) {
-                tech.add(user);
-            } else if (user.getDepartment().equals("市场部")) {
-                mark.add(user);
-            }
+        for (User user : users) {
+            department.add(user.getDepartment());
         }
-        map.put("技术部", tech);
-        map.put("市场部", mark);
+        for (String dname : department) {
+            List<User> list = new LinkedList<>();
+            for (User user : users) {
+                if (dname.equals(user.getDepartment())) {
+                    list.add(user);
+                }
+            }
+            map.put(dname,list);
+        }
         return map;
     }
 
