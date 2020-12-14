@@ -54,11 +54,13 @@ public class User implements Comparable {
 
     @Override
     public String toString() {
-        return "{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", department='" + department + '\'' +
-                '}';
+        final StringBuffer sb = new StringBuffer("User{");
+
+        sb.append("name='").append(name).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", department='").append(department).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
     @Override
