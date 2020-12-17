@@ -26,8 +26,7 @@ public class Main {
             //获取map集合中对应的值，这个值是一个集合，可以通过add方法添加对象
             map.get(department).add(user);
         }
-
-        // sort
+        // 排序
         for (List<User> list : map.values()) {
             list.sort(Comparator.comparingInt(User::getAge));
         }
