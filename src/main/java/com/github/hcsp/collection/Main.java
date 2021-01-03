@@ -11,22 +11,18 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        //创建一个Map<String, List<User>>集合
+        //创建一个map集合
         Map<String, List<User>> map = new HashMap<>();
-        //创建一个接收部门的变量
-        String department;
-        // 插入
+        //通过foreach循环遍历users对象集合，再通过对象获取到部门名称
         for (User user : users) {
-            // 获取user中的部门
-            department = user.getDepartment();
-            // 判断map集合中是否包含这个department，没有就添加
-            if (!map.containsKey(department)) {
-                map.put(department, new ArrayList<>());
+            if (map.containsKey(user.getDepartment())) {
+                map.get(user.getDepartment()).add(user);
+            } else {
+                List<User> list = new ArrayList();
+                list.add(user);
+                map.put(user.getDepartment(), list);
             }
-            //获取map集合中对应的值，这个值是一个集合，可以通过add方法添加对象
-            map.get(department).add(user);
         }
-        // 排序
         for (List<User> list : map.values()) {
             list.sort(Comparator.comparingInt(User::getAge));
         }
