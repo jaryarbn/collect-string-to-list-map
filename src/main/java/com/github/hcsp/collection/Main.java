@@ -15,16 +15,16 @@ public class Main {
         for (User user : users) {
             String department = user.getDepartment();
             if (!result.containsKey(department)) {
-                result.put(department, new ArrayList<User>(Arrays.asList(user)));
+                result.put(department, new ArrayList<>(Collections.singletonList(user)));
             } else {
-                List list = result.get(department);
+                List<User> list = result.get(department);
                 list.add(user);
             }
         }
 
         for (Map.Entry<String, List<User>> entry : result.entrySet()) {
             List<User> userList = entry.getValue();
-            Collections.sort(userList, new Comparator<User>() {
+            userList.sort(new Comparator<User>() {
                 @Override
                 public int compare(User o1, User o2) {
                     return o1.getAge() - o2.getAge();
