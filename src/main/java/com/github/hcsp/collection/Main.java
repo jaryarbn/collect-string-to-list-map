@@ -15,7 +15,7 @@ public class Main {
         for (User user : users) {
             String department = user.getDepartment();
             if (!result.containsKey(department)) {
-                result.put(department, Arrays.asList(user));
+                result.put(department, new ArrayList<User>(Arrays.asList(user)));
             } else {
                 List list = result.get(department);
                 list.add(user);
